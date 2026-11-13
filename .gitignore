@@ -1,0 +1,7 @@
+.env
+!.env.example
+*.lic
+*.key
+*.pem
+data/
+.DS_Store

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommunityApplications>
+  <Profile>百智办公（MonkeyAI）Unraid 社区部署模板，由 nghiemphucminh7215-ops 维护，非厂商官方 Unraid 发行版。百智办公是面向团队的 AI 办公工作台，通过自然语言完成办公、编程、设计任务，并统一管理模型、知识库、技能、专家、MCP 连接器、规则、权限、审计及使用统计。本仓库采用官方固定版本镜像，提供多服务 Compose 配置、详细介绍和安全部署说明。模板问题请在本仓库 Issues 反馈；产品问题请参阅官方文档。当前未完成真实 Unraid 启动测试。</Profile>
+  <Icon>https://work.baizhi.cloud/monkeyai-logo.png</Icon>
+  <WebPage>https://github.com/nghiemphucminh7215-ops/baizhi-unraid</WebPage>
+  <Forum>https://github.com/nghiemphucminh7215-ops/baizhi-unraid/issues</Forum>
+</CommunityApplications>

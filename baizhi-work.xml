@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>Baizhi-Work</Name>
+  <Repository>chaitin-registry.cn-hangzhou.cr.aliyuncs.com/monkeycode/monkeyai-backend:v26111301</Repository>
+  <Registry>https://work.baizhi.cloud/</Registry>
+  <AppTemplateType>compose</AppTemplateType>
+  <ComposeSourceRepository>https://github.com/nghiemphucminh7215-ops/baizhi-unraid</ComposeSourceRepository>
+  <ComposeSourceCommit>9c23fc6286a5030917b0bedc8dc0392c56a3faa3</ComposeSourceCommit>
+  <ComposeProjectPath>baizhi</ComposeProjectPath>
+  <MinVer>8.0.0</MinVer>
+  <Beta>true</Beta>
+  <Privileged>false</Privileged>
+  <Category>Tools:Utilities</Category>
+  <Icon>https://work.baizhi.cloud/monkeyai-logo.png</Icon>
+  <Project>https://work.baizhi.cloud/</Project>
+  <Support>https://github.com/nghiemphucminh7215-ops/baizhi-unraid/issues</Support>
+  <ReadMe>https://github.com/nghiemphucminh7215-ops/baizhi-unraid/blob/main/README.md</ReadMe>
+  <License>配置与文档：AGPL-3.0；官方镜像、商标及商业发行版另受原权利人条款约束。</License>
+  <Overview>百智办公（MonkeyAI）是面向团队的 AI 办公工作台，用自然语言提出需求，结合文件、模型和工具执行任务并交付工作成果。办公：制作 PPT、编写文档、处理表格、整理文件；编程：架构设计、代码编写、阅读项目和修复问题；设计：海报、平面设计、交互设计及图片和视频创作。团队可共享大模型、知识库、技能、专家、MCP 连接器和规则，并统一配置权限、审计、额度及使用统计。支持自有模型和工具、私有化部署与开源扩展；使用外部服务时，相关内容仍可能发送给该服务。本社区模板使用官方 v26111301 镜像，以 Compose 编排 PostgreSQL、RustFS、迁移、Backend 和 Admin，另含无网络的一次性命名卷权限初始化。只暴露管理入口，密码需自行设置，生产应使用 HTTPS。官网免费方案标示最多 10 席位；本模板使用的预构建发行版可能需单独产品 License，具体权益以官方为准。Windows、macOS、Linux x64 客户端可连接；手机原生客户端尚未发布。本模板不是厂商官方 Unraid 发行版，未做真实 Unraid/Docker 启动验证，请先在隔离环境测试。详细说明、备份与升级步骤见仓库 README。</Overview>
+  <Requires>需要支持 Compose 源包安装的 Unraid 版本（面向 Unraid 8），不适用于旧版单容器安装器。x86_64；先填写所有首次初始化凭据和实际访问地址，局域网访问需设置 NAS 内网绑定 IP。管理员登录后需配置模型及产品授权。默认明文 HTTP 只供受控内网或 HTTPS 反向代理，不可直接暴露公网。实验性，尚未进行真实启动测试。</Requires>
+  <WebUI>http://[IP]:8088</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/nghiemphucminh7215-ops/baizhi-unraid/main/baizhi-work.xml</TemplateURL>
+  <Config Name="绑定 IP" Target="MONKEYAI_BIND_IP" Default="127.0.0.1" Mode="" Description="默认仅宿主机可访问；局域网使用请填写 NAS 实际内网 IP。" Type="Variable" Display="always" Required="true" Mask="false">127.0.0.1</Config>
+  <Config Name="管理入口端口" Target="MONKEYAI_ADMIN_PORT" Default="8088" Mode="" Description="选择未被 Unraid 或其他服务占用的端口，并同步更新对外地址。" Type="Variable" Display="always" Required="true" Mask="false">8088</Config>
+  <Config Name="服务器对外根地址" Target="MONKEYAI_PUBLIC_URL" Default="" Mode="" Description="填写客户端实际访问的根地址，生产环境使用 HTTPS，不能带子路径。" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="数据库密码" Target="POSTGRES_PASSWORD" Default="" Mode="" Description="使用 openssl rand -hex 32 生成独立随机十六进制值，避免连接 URI 保留字符。" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="对象存储访问标识" Target="RUSTFS_ACCESS_KEY" Default="" Mode="" Description="设置独立随机访问标识，例如随机十六进制值，不要使用通用默认凭据。" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="对象存储密钥" Target="RUSTFS_SECRET_KEY" Default="" Mode="" Description="设置独立随机密钥，切勿与数据库或管理员密码复用。" Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="首次管理员邮箱" Target="MONKEYAI_INITIAL_ADMIN_EMAIL" Default="" Mode="" Description="仅用于空用户库的管理员初始化。" Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="首次管理员密码" Target="MONKEYAI_INITIAL_ADMIN_PASSWORD" Default="" Mode="" Description="首次启动设置强随机密码；登录后改密并清除本初始化配置，再重建 Backend。" Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="可信代理 IP/CIDR" Target="MONKEYAI_TRUSTED_PROXY_CIDRS" Default="" Mode="" Description="仅填写直接相连的可信代理地址，多个值用逗号分隔，不要信任所有网段。" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+</Container>
